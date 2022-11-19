@@ -1,4 +1,5 @@
---// Not My Script | IDK Who Made It
+--[[ I Dont Obfuscate Because This Script Is Known Already
+And This ISNT MY SCRIPT --]]
 getgenv().Settings = {
 	['SpySettings'] = {
 		['Color'] = Color3.fromRGB(1, 255, 255),
