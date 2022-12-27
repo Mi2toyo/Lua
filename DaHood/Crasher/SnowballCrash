@@ -1,0 +1,36 @@
+getgenv().Amount = 100
+
+--// Free Source enjoy
+local function GetService(Service) return game:GetService(Service); end;
+local function GetPlayers() return GetService("Players"):GetPlayers(); end;
+local function FireServer(...) GetService("ReplicatedStorage")["MainEvent"]:FireServer(...); end;
+local Create, Destroy = Instance.new, game.Destroy
+local FindFirstChild, FindFirstChildOfClass, FindFirstChildWhichIsA, WaitForChild = game.FindFirstChild, game.FindFirstChildOfClass, game.FindFirstChildWhichIsA, game.WaitForChild
+local GetChildren, GetDescendants = game.GetChildren, game.GetDescendants
+local Infinite, Random, Rad = math.huge, math.random, math.rad
+local User, Character, Mouse = GetService("Players").LocalPlayer, GetService("Players").LocalPlayer.Character, GetService("Players").LocalPlayer:GetMouse()
+local Bypass; Bypass = hookmetamethod(game, "__namecall", newcclosure(function(...) if tostring(...) == "MainEvent TeleportDetect" then return end; return Bypass(...); end))
+
+Destroy(Character["BodyEffects"]["K.O"])
+Destroy(User["PlayerGui"]["MainScreenGui"]["Crew"]["CrewFrame"])
+while wait(0.2) do
+    for _, value in next, GetChildren(User["Backpack"]) do
+        value.Parent = Character
+    end
+    for _, value in next, GetDescendants(workspace["Ignored"]["ItemsDrop"]) do
+        if value.Name == "Handle" then
+            value.CFrame = Character["HumanoidRootPart"].CFrame
+        end
+    end
+    for index, value in next, GetChildren(Character) do
+        if value:IsA("Tool") then
+            if index < Amount then
+                Character["HumanoidRootPart"].CFrame = CFrame.new(-477.391693, 40.7372589, -283.744751, -0.00460554659, -1.23367812e-07, -0.99998939, 7.67377983e-09, 1, -1.23404462e-07, 0.99998939, -8.24204349e-09, -0.00460554659)
+                FireServer("PickSnow")
+            elseif index >= Amount then
+                Destroy(Character["RightHand"])
+                break
+            end
+        end
+    end
+end
